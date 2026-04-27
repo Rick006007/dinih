@@ -2000,11 +2000,12 @@ async function fabSend() {
   document.getElementById('chat-typing').classList.add('show');
   document.getElementById('chat-quick').style.display='none';
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('/api/chat', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1000,
+      body:JSON.stringify({
         system:`Tu es l'assistant officiel du portail e-gouvernement d'Haïti (DINIH). Tu réponds aux questions sur les démarches administratives haïtiennes : état civil (ONI), passeport (AGD/DGM), impôts/NIF (DGI), ONA (assurance vieillesse), MENFP (éducation), MSPP (santé), DCSR (transport), MCCE (commerce), MAST (affaires sociales), justice (MJ). Tu parles la langue de l'utilisateur : français, créole haïtien ou anglais. Tu es précis, bienveillant, concis. Réponds en 2-5 phrases max sauf si plus de détail est demandé.`,
-        messages:chatHistory })
+        messages:chatHistory
+      })
     });
     const data = await res.json();
     const reply = data.content?.[0]?.text || 'Désolé, service indisponible momentanément.';
