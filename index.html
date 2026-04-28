@@ -1078,13 +1078,13 @@ footer {
       </div>
     </div>
     <div class="ai-insight-box" style="margin-top:24px;">
-      <div class="ai-insight-icon">🤖</div>
+      <div class="ai-insight-icon"><i data-lucide="sparkles" style="width:20px;height:20px;color:var(--bleu-mid);"></i></div>
       <div>
         <div class="ai-insight-label">Résumé IA · Cette semaine</div>
         <div class="ai-insight-text">3 mises à jour importantes : DGI prolonge le délai fiscal au 15 mai, le MENFP publie les résultats BAC, et l'ONA révise ses barèmes de cotisations. Cliquez sur une actualité pour que l'assistant vous explique l'impact concret sur votre situation.</div>
       </div>
       <button class="btn-secondary" style="flex-shrink:0;font-size:12px;" onclick="toggleChat();fabAsk('Résume-moi les actualités importantes de cette semaine pour un citoyen haïtien')">
-        <i data-lucide="bot" style="width:14px;height:14px;"></i>M'expliquer
+        <i data-lucide="sparkles" style="width:14px;height:14px;"></i>M'expliquer
       </button>
     </div>
   </div>
@@ -1181,6 +1181,79 @@ footer {
   </div>
 </div>
 
+<!-- BIENTÔT DISPONIBLE MODAL -->
+<div class="overlay" id="soon-overlay" onclick="if(event.target===this)closeOverlay('soon-overlay')">
+  <div class="modal" style="max-width:460px;">
+    <div class="modal-hd">
+      <div style="display:flex;gap:12px;align-items:flex-start;flex:1;">
+        <div class="modal-hd-icon" style="background:#FFF8E7;color:#E8A317;"><i data-lucide="clock"></i></div>
+        <div>
+          <div class="modal-title" id="soon-modal-title">Service en développement</div>
+          <div class="modal-sub" id="soon-modal-inst">DINIH — Portail e-Gouvernement</div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeOverlay('soon-overlay')"><i data-lucide="x"></i></button>
+    </div>
+    <div class="modal-body">
+      <!-- Illustration -->
+      <div style="text-align:center;padding:20px 0 24px;">
+        <div style="width:80px;height:80px;background:linear-gradient(135deg,#FFF8E7,#FEF3C7);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;border:2px solid #FDE68A;">
+          <i data-lucide="construction" style="width:36px;height:36px;color:#D97706;"></i>
+        </div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:19px;font-weight:700;color:var(--text);margin-bottom:8px;" id="soon-modal-svc-title">Service bientôt disponible</div>
+        <div style="font-size:13.5px;color:var(--text2);line-height:1.7;max-width:340px;margin:0 auto;" id="soon-modal-desc">
+          Notre équipe technique travaille activement sur ce service. Il sera disponible dans les prochaines semaines.
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);">Avancement du développement</span>
+          <span style="font-size:12px;font-weight:700;color:#D97706;" id="soon-progress-pct">65%</span>
+        </div>
+        <div style="background:var(--border);border-radius:20px;height:8px;overflow:hidden;">
+          <div id="soon-progress-bar" style="height:100%;background:linear-gradient(90deg,#F59E0B,#D97706);border-radius:20px;width:65%;transition:width 0.6s ease;"></div>
+        </div>
+        <div style="display:flex;gap:20px;margin-top:14px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--vert);">
+            <i data-lucide="check-circle" style="width:14px;height:14px;"></i>Conception validée
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--vert);">
+            <i data-lucide="check-circle" style="width:14px;height:14px;"></i>Développement en cours
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);">
+            <i data-lucide="circle" style="width:14px;height:14px;"></i>Tests & validation
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);">
+            <i data-lucide="circle" style="width:14px;height:14px;"></i>Déploiement public
+          </div>
+        </div>
+      </div>
+
+      <!-- Notification signup -->
+      <div style="background:var(--bleu-light);border:1px solid #C7D2FE;border-radius:12px;padding:16px 18px;margin-bottom:4px;">
+        <div style="font-size:13px;font-weight:600;color:var(--bleu);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+          <i data-lucide="bell" style="width:15px;height:15px;"></i>Être notifié au lancement
+        </div>
+        <div style="display:flex;gap:8px;">
+          <input id="soon-notify-tel" class="form-input" placeholder="+509 __ __ __ __" type="tel" style="flex:1;font-size:13px;padding:9px 12px;">
+          <button onclick="soonNotify()" style="background:var(--bleu);color:white;border:none;border-radius:10px;padding:9px 16px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">M'alerter</button>
+        </div>
+        <div id="soon-notify-confirm" style="display:none;font-size:12px;color:var(--vert);margin-top:8px;display:flex;align-items:center;gap:5px;">
+          <i data-lucide="check" style="width:13px;height:13px;"></i>Vous serez notifié par SMS dès le lancement.
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeOverlay('soon-overlay')">Fermer</button>
+      <button class="btn-primary" onclick="closeOverlay('soon-overlay');toggleChat();fabAsk('Quand sera disponible le service : '+document.getElementById(\'soon-modal-svc-title\').textContent+' sur le portail DINIH ?')">
+        <i data-lucide="sparkles"></i>Demander à l'IA
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- AUTH MODAL -->
 <div class="overlay" id="auth-overlay" onclick="if(event.target===this)closeOverlay('auth-overlay')">
   <div class="modal" style="max-width:440px;">
@@ -1193,7 +1266,7 @@ footer {
     </div>
     <div class="modal-body" id="auth-body">
       <div id="auth-step1">
-        <div class="ai-hint"><div class="ai-hint-icon">🤖</div><div><div class="ai-hint-label">Assistant IA</div><div class="ai-hint-text">Votre NIF ou numéro CIN sert d'identifiant unique. En cas de problème, je suis disponible 24h/24 pour vous aider.</div></div></div>
+        <div class="ai-hint"><div class="ai-hint-icon"><i data-lucide="sparkles" style="width:20px;height:20px;color:var(--bleu-mid);"></i></div><div><div class="ai-hint-label">Assistant IA</div><div class="ai-hint-text">Votre NIF ou numéro CIN sert d'identifiant unique. En cas de problème, je suis disponible 24h/24 pour vous aider.</div></div></div>
         <div class="steps-row">
           <div class="step-item active"><div class="step-circle">1</div><div class="step-label">Identifiants</div></div>
           <div class="step-item"><div class="step-circle">2</div><div class="step-label">Vérification</div></div>
@@ -1254,7 +1327,7 @@ footer {
 <div class="chat-fab">
   <div class="chat-win" id="chat-win">
     <div class="chat-win-hd">
-      <div class="chat-win-hd-avatar"><i data-lucide="bot"></i></div>
+      <div class="chat-win-hd-avatar"><i data-lucide="sparkles"></i></div>
       <div><div class="chat-win-title">Assistant DINIH</div><div class="chat-win-sub">FR · HT · EN · Disponible 24/7</div></div>
       <button class="chat-win-close" onclick="toggleChat()"><i data-lucide="x"></i></button>
     </div>
@@ -1321,7 +1394,7 @@ footer {
       <div class="footer-contact-item"><i data-lucide="map-pin"></i><div><span class="footer-contact-lbl">Adresse</span><span class="footer-contact-val">Angle rues Mgr. Guilloux & Legitime<br>Port-au-Prince, HT 6110</span></div></div>
       <div class="footer-contact-item"><i data-lucide="phone"></i><div><span class="footer-contact-lbl">Centre d'appel</span><span class="footer-contact-val">+509 2222-0000<br><span style="font-size:11px;opacity:0.5;">Lun–Ven 8h–17h (HAE)</span></span></div></div>
       <div class="footer-contact-item"><i data-lucide="mail"></i><div><span class="footer-contact-lbl">Email</span><span class="footer-contact-val">support@dinih.gouv.ht</span></div></div>
-      <div class="footer-contact-item"><i data-lucide="bot"></i><div><span class="footer-contact-lbl">Assistant IA 24/7</span><button onclick="toggleChat()" style="background:none;border:none;color:#FFD166;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;padding:0;">Ouvrir le chat →</button></div></div>
+      <div class="footer-contact-item"><i data-lucide="sparkles"></i><div><span class="footer-contact-lbl">Assistant IA 24/7</span><button onclick="toggleChat()" style="background:none;border:none;color:#FFD166;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;padding:0;">Ouvrir le chat →</button></div></div>
     </div>
   </div>
   <div class="footer-middle">
@@ -1335,7 +1408,7 @@ footer {
       <div class="footer-inst-badge"><span>MEF</span></div>
       <div class="footer-inst-badge"><span>MCCE</span></div>
     </div>
-    <div class="footer-ai-badge">🤖 Propulsé par <strong style="color:#FFD166;margin:0 3px;">IA open source</strong> — Mistral · LLaMA · Claude</div>
+    <div class="footer-ai-badge"><i data-lucide="sparkles" style="width:13px;height:13px;vertical-align:middle;margin-right:4px;"></i>Propulsé par <strong style="color:#FFD166;margin:0 3px;">IA open source</strong> — Mistral · LLaMA · Claude</div>
   </div>
   <div class="footer-bottom">
     <div class="footer-legal">
@@ -1357,7 +1430,7 @@ footer {
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
   renderSvcCat(0);
-  addBotMsg("Bonjour ! Je suis l'assistant DINIH 🤖\n\nJe peux vous aider avec vos démarches administratives en français, créole haïtien ou anglais. Comment puis-je vous aider aujourd'hui ?");
+  addBotMsg("Bonjour ! Je suis l'assistant DINIH ✦\n\nJe peux vous aider avec vos démarches administratives en français, créole haïtien ou anglais. Comment puis-je vous aider aujourd'hui ?");
   document.querySelectorAll('.auth-tab').forEach(t => t.addEventListener('click', () => {
     document.querySelectorAll('.auth-tab').forEach(x => x.classList.remove('active'));
     t.classList.add('active');
@@ -1494,7 +1567,7 @@ function renderSvcCat(idx) {
         <div style="font-size:13px;color:var(--text2);">${cat.inst}</div>
       </div>
       <button class="btn-secondary" style="margin-left:auto;font-size:12px;" onclick="toggleChat();fabAsk('Explique-moi les services disponibles dans la catégorie ${cat.name}')">
-        <i data-lucide="bot" style="width:14px;height:14px;"></i>Aide IA
+        <i data-lucide="sparkles" style="width:14px;height:14px;"></i>Aide IA
       </button>
     </div>
     <div class="svc-grid">
@@ -1628,6 +1701,383 @@ const forms = {
       <div class="form-group"><label class="form-label">Adresse de résidence</label><textarea class="form-textarea" name="adresse" placeholder="Adresse complète"></textarea></div>
       <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Centre d'examen</label><select class="form-select" name="centre"><option>Port-au-Prince — DCSR Delmas</option><option>Cap-Haïtien</option><option>Les Cayes</option><option>Gonaïves</option></select></div></div>`
   },
+  // ── ÉTAT CIVIL ──
+  'acte-mariage': {
+    title:'Acte de mariage', icon:'heart', color:'icon-blue', inst:'ONI', price:'500 HTG',
+    aiHint:'Pour un extrait d\'acte de mariage, vous avez besoin de la date et commune du mariage, des noms complets des deux époux et du numéro de registre si disponible. Délai habituel : 15 jours ouvrables.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de demande</label><select class="form-select" name="type"><option>Extrait d'acte de mariage</option><option>Copie certifiée conforme</option><option>Transcription de mariage célébré à l'étranger</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) de l'époux</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom de l'époux</label><input class="form-input" name="nom" placeholder="NOM DE FAMILLE"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) de l'épouse</label><input class="form-input" name="prenom-epouse" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom de l'épouse</label><input class="form-input" name="nom-epouse" placeholder="NOM DE FAMILLE"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date du mariage</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Commune du mariage</label><select class="form-select" name="commune"><option>Port-au-Prince</option><option>Cap-Haïtien</option><option>Les Cayes</option><option>Gonaïves</option><option>Jérémie</option><option>Jacmel</option><option>Hinche</option><option>Saint-Marc</option><option>Miragoâne</option><option>Fort-Liberté</option></select></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">N° de registre (si connu)</label><input class="form-input" name="registre" placeholder="Optionnel"></div><div class="form-group"><label class="form-label">Nombre d'exemplaires</label><select class="form-select" name="exemplaires"><option>1</option><option>2</option><option>3</option></select></div></div>
+      <div class="form-group"><label class="form-label">Motif de la demande</label><select class="form-select" name="motif"><option>Usage personnel</option><option>Voyage / Visa</option><option>Procédures légales</option><option>Autre</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+  'acte-deces': {
+    title:'Acte de décès', icon:'file-minus', color:'icon-blue', inst:'ONI', price:'500 HTG',
+    aiHint:'La déclaration de décès doit être effectuée dans les 72h en Haïti. Pour un certificat de décès, munissez-vous du nom complet du défunt, de la date et du lieu de décès, et du numéro CIN du déclarant.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de demande</label><select class="form-select" name="type"><option>Déclaration de décès</option><option>Extrait d'acte de décès (copie)</option><option>Certificat de décès officiel</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) du défunt</label><input class="form-input" name="prenom" placeholder="Prénom(s) complet(s)"></div><div class="form-group"><label class="form-label">Nom du défunt</label><input class="form-input" name="nom" placeholder="NOM DE FAMILLE"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de décès</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Lieu de décès (commune)</label><input class="form-input" name="lieu" placeholder="Ex: Pétion-Ville"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Nom de la mère</label><input class="form-input" name="mere" placeholder="Nom complet"></div><div class="form-group"><label class="form-label">Nom du père</label><input class="form-input" name="pere" placeholder="Nom complet"></div></div>
+      <div class="form-group"><label class="form-label">CIN du déclarant (lien avec défunt)</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div>
+      <div class="form-group"><label class="form-label">Lien de parenté avec le défunt</label><select class="form-select" name="motif"><option>Conjoint(e)</option><option>Enfant</option><option>Parent (père/mère)</option><option>Frère / Sœur</option><option>Médecin déclarant</option><option>Autre</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+  'cin': {
+    title:'Pré-inscription CIN', icon:'credit-card', color:'icon-blue', inst:'ONI', price:'Gratuit',
+    aiHint:'La Carte d\'Identification Nationale est gratuite. La pré-inscription en ligne vous génère un rendez-vous au bureau ONI le plus proche. Munissez-vous de votre acte de naissance certifié et de 2 photos d\'identité fond blanc.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de demande</label><select class="form-select" name="type"><option>Première CIN</option><option>Renouvellement</option><option>Remplacement (perte ou vol)</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s)</label><input class="form-input" name="prenom" placeholder="Prénom(s) complet(s)"></div><div class="form-group"><label class="form-label">Nom de famille</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de naissance</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Lieu de naissance</label><input class="form-input" name="lieu" placeholder="Commune, département"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Nom de la mère</label><input class="form-input" name="mere" placeholder="Nom complet"></div><div class="form-group"><label class="form-label">Nom du père</label><input class="form-input" name="pere" placeholder="Nom complet"></div></div>
+      <div class="form-group"><label class="form-label">Adresse de résidence actuelle</label><textarea class="form-textarea" name="adresse" placeholder="Rue, quartier, commune, département"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Bureau ONI souhaité</label><select class="form-select" name="bureau"><option>Port-au-Prince — Delmas</option><option>Cap-Haïtien</option><option>Les Cayes</option><option>Gonaïves</option><option>Jérémie</option><option>Jacmel</option></select></div><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div>`
+  },
+  // ── JUSTICE ──
+  'amende': {
+    title:'Paiement d\'amendes', icon:'receipt', color:'icon-red', inst:'MJ', price:'Variable',
+    aiHint:'Le paiement d\'amendes judiciaires ou contraventions peut se faire en ligne via ce portail. Munissez-vous de votre numéro de procès-verbal (PV) ou de l\'avis d\'amende. Le paiement est immédiatement enregistré dans le système judiciaire.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type d'amende</label><select class="form-select" name="type"><option>Amende judiciaire (tribunal civil)</option><option>Amende judiciaire (tribunal correctionnel)</option><option>Contravention routière</option><option>Amende fiscale</option><option>Amende commerciale (MCCE)</option></select></div>
+      <div class="form-group"><label class="form-label">Numéro de PV ou référence d'amende</label><input class="form-input" name="registre" placeholder="Ex: PV-2025-00000 ou HTI-AME-XXXXX"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) du contrevenant</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-group"><label class="form-label">Numéro CIN</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Montant de l'amende (HTG)</label><input class="form-input" name="capital" type="number" placeholder="Ex: 5000" min="0"></div><div class="form-group"><label class="form-label">Date de l'infraction</label><input class="form-input" name="dob" type="date"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+  // ── FISCALITÉ ──
+  'paiement-taxes': {
+    title:'Paiement taxes DGI', icon:'receipt', color:'icon-gold', inst:'DGI', price:'Variable',
+    aiHint:'Le portail DINIH vous permet de régler vos taxes DGI (TCA, IRPP, patente…) en ligne. Munissez-vous de votre NIF, de votre avis d\'imposition ou de votre numéro de déclaration. Le paiement est transmis à la DGI en temps réel.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de taxe</label><select class="form-select" name="type"><option>TCA — Taxe sur le Chiffre d'Affaires</option><option>IRPP — Impôt sur le Revenu des Personnes Physiques</option><option>IS — Impôt sur les Sociétés</option><option>Patente commerciale</option><option>Taxe foncière</option><option>Contribution des patentes</option><option>Droits d'enregistrement</option></select></div>
+      <div class="form-group"><label class="form-label">Numéro d'Identification Fiscale (NIF)</label><input class="form-input" name="nif" placeholder="001-000-000-0"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) / Raison sociale</label><input class="form-input" name="prenom" placeholder="Nom ou raison sociale"></div><div class="form-group"><label class="form-label">Période fiscale</label><select class="form-select" name="dept"><option>Exercice 2024</option><option>Exercice 2023</option><option>Trimestre 1 — 2025</option><option>Trimestre 2 — 2025</option><option>Mois courant</option></select></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Numéro d'avis / déclaration</label><input class="form-input" name="registre" placeholder="Optionnel si connu"></div><div class="form-group"><label class="form-label">Montant (HTG)</label><input class="form-input" name="capital" type="number" placeholder="Montant à payer" min="0"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+  'declaration-fiscale': {
+    title:'Déclaration fiscale', icon:'file-spreadsheet', color:'icon-gold', inst:'DGI', price:'Gratuit',
+    aiHint:'La déclaration fiscale annuelle est obligatoire pour toute personne physique ou morale disposant d\'un NIF actif. La date limite est généralement fixée au 31 mars. Munissez-vous de votre NIF, de vos relevés de revenus et de vos justificatifs de charges.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de déclaration</label><select class="form-select" name="type"><option>IRPP — Déclaration annuelle revenus</option><option>IS — Déclaration sociétés</option><option>TCA — Déclaration mensuelle</option><option>TCA — Déclaration trimestrielle</option><option>Déclaration rectificative</option></select></div>
+      <div class="form-group"><label class="form-label">NIF du déclarant</label><input class="form-input" name="nif" placeholder="001-000-000-0"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) / Raison sociale</label><input class="form-input" name="prenom" placeholder="Nom ou raison sociale"></div><div class="form-group"><label class="form-label">Exercice fiscal</label><select class="form-select" name="dept"><option>2024</option><option>2023</option><option>2022</option></select></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Revenu brut déclaré (HTG)</label><input class="form-input" name="capital" type="number" placeholder="Ex: 1 200 000" min="0"></div><div class="form-group"><label class="form-label">Charges déductibles (HTG)</label><input class="form-input" name="effectif" type="number" placeholder="Ex: 300 000" min="0"></div></div>
+      <div class="form-group"><label class="form-label">Secteur d'activité</label><select class="form-select" name="secteur"><option>Commerce</option><option>Services</option><option>Agriculture</option><option>Industrie</option><option>Professions libérales</option><option>ONG</option></select></div>
+      <div class="form-group"><label class="form-label">Observations / Remarques (optionnel)</label><textarea class="form-textarea" name="motif" placeholder="Informations complémentaires pour la DGI…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+  'quitus': {
+    title:'Quitus fiscal', icon:'check-circle', color:'icon-gold', inst:'DGI', price:'500 HTG',
+    aiHint:'Le quitus fiscal (attestation de conformité fiscale) est exigé pour tout appel d\'offres, marché public, voyage officiel ou création d\'entreprise. Délai : 5 jours ouvrables. Validité : 3 mois. Munissez-vous de votre NIF et de vos justificatifs de paiement de taxes.',
+    fields:`
+      <div class="form-group"><label class="form-label">Motif de la demande</label><select class="form-select" name="motif"><option>Appel d'offres / marché public</option><option>Création / renouvellement d'entreprise</option><option>Voyage officiel</option><option>Procédures bancaires</option><option>Demande de visa ou immigration</option><option>Autre</option></select></div>
+      <div class="form-group"><label class="form-label">NIF du contribuable</label><input class="form-input" name="nif" placeholder="001-000-000-0"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) / Raison sociale</label><input class="form-input" name="prenom" placeholder="Nom ou raison sociale"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM (si personne physique)"></div></div>
+      <div class="form-group"><label class="form-label">Adresse fiscale</label><textarea class="form-textarea" name="adresse" placeholder="Adresse complète enregistrée auprès de la DGI"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>
+      <div class="form-note" style="margin-top:8px;"><i data-lucide="info"></i>Le quitus sera disponible en téléchargement PDF sous 5 jours ouvrables après vérification DGI.</div>`
+  },
+  'patente': {
+    title:'Patente / Licence', icon:'award', color:'icon-gold', inst:'DGI', price:'Variable',
+    aiHint:'La patente est une taxe annuelle obligatoire pour tout commerçant, industriel ou professionnel libéral. Le montant varie selon le chiffre d\'affaires et la nature de l\'activité. Elle doit être renouvelée chaque année avant le 31 mars.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de patente</label><select class="form-select" name="type"><option>Patente commerciale (commerçant)</option><option>Patente industrielle (fabricant)</option><option>Patente artisanale</option><option>Licence professionnelle libérale</option><option>Patente d'import/export</option></select></div>
+      <div class="form-group"><label class="form-label">NIF du contribuable</label><input class="form-input" name="nif" placeholder="001-000-000-0"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Raison sociale / Nom commercial</label><input class="form-input" name="raison" placeholder="Nom de l'entreprise"></div><div class="form-group"><label class="form-label">Exercice</label><select class="form-select" name="dept"><option>2025</option><option>2024</option></select></div></div>
+      <div class="form-group"><label class="form-label">Secteur d'activité</label><select class="form-select" name="secteur"><option>Commerce général</option><option>Import / Export</option><option>Alimentation / Restauration</option><option>Construction & BTP</option><option>Transport</option><option>Pharmacie & Santé</option><option>Éducation & Formation</option><option>Services numériques</option><option>Artisanat</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Chiffre d'affaires annuel estimé (HTG)</label><input class="form-input" name="capital" type="number" placeholder="Ex: 2 000 000" min="0"></div><div class="form-group"><label class="form-label">Nombre d'employés</label><input class="form-input" name="effectif" type="number" placeholder="Ex: 5" min="0"></div></div>
+      <div class="form-group"><label class="form-label">Adresse de l'établissement</label><textarea class="form-textarea" name="adresse" placeholder="Adresse complète"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="contact@entreprise.ht"></div></div>`
+  },
+  // ── ENTREPRISES ──
+  'enreg-commerce': {
+    title:'Enregistrement commerce', icon:'store', color:'icon-purple', inst:'MCCE', price:'2 000 HTG',
+    aiHint:'L\'enregistrement au registre national du commerce est obligatoire pour toute activité commerciale en Haïti. Il vous faut : le NIF de l\'entreprise, une pièce d\'identité valide du responsable, et une preuve d\'adresse commerciale.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type d'enregistrement</label><select class="form-select" name="type"><option>Nouvel enregistrement</option><option>Modification d'enregistrement existant</option><option>Transfert de propriété commerciale</option></select></div>
+      <div class="form-group"><label class="form-label">Nom commercial</label><input class="form-input" name="raison" placeholder="Nom sous lequel vous exercez le commerce"></div>
+      <div class="form-group"><label class="form-label">NIF de l'entreprise</label><input class="form-input" name="nif" placeholder="001-000-000-0"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Secteur d'activité</label><select class="form-select" name="secteur"><option>Commerce général</option><option>Import / Export</option><option>Alimentation</option><option>Textile & Habillement</option><option>Électronique</option><option>Matériaux de construction</option><option>Services</option><option>Autre</option></select></div><div class="form-group"><label class="form-label">Effectif employés</label><input class="form-input" name="effectif" type="number" placeholder="Nombre" min="1"></div></div>
+      <div class="form-group"><label class="form-label">Siège commercial (adresse exacte)</label><textarea class="form-textarea" name="adresse" placeholder="Adresse complète du local commercial"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom du responsable</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom du responsable</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">CIN du responsable</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="contact@commerce.ht"></div>`
+  },
+  'renouvellement-licence': {
+    title:'Renouvellement licence', icon:'refresh-cw', color:'icon-purple', inst:'MCCE', price:'1 500 HTG',
+    aiHint:'Le renouvellement annuel de licence commerciale doit être effectué avant le 31 mars de chaque année. Munissez-vous de votre numéro de licence existant, de votre NIF, et du reçu de paiement de patente de l\'année en cours.',
+    fields:`
+      <div class="form-group"><label class="form-label">Numéro de licence existant</label><input class="form-input" name="registre" placeholder="LIC-MCCE-XXXXX"></div>
+      <div class="form-group"><label class="form-label">Raison sociale / Nom commercial</label><input class="form-input" name="raison" placeholder="Nom officiel de l'entreprise"></div>
+      <div class="form-group"><label class="form-label">NIF de l'entreprise</label><input class="form-input" name="nif" placeholder="001-000-000-0"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Type de licence</label><select class="form-select" name="type"><option>Licence commerciale générale</option><option>Licence import/export</option><option>Licence professionnelle</option><option>Licence artisanale</option></select></div><div class="form-group"><label class="form-label">Exercice à renouveler</label><select class="form-select" name="dept"><option>2025</option><option>2024</option></select></div></div>
+      <div class="form-group"><label class="form-label">Changements depuis le dernier renouvellement</label><textarea class="form-textarea" name="motif" placeholder="Adresse, activité, responsable… (laisser vide si aucun changement)"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="contact@entreprise.ht"></div></div>`
+  },
+  'tva': {
+    title:'Déclaration TVA', icon:'percent', color:'icon-purple', inst:'DGI / MCCE', price:'Gratuit',
+    aiHint:'La TVA (Taxe sur la Valeur Ajoutée) est déclarée mensuellement ou trimestriellement selon votre régime. Le taux standard est de 10% en Haïti. Munissez-vous de vos factures d\'achat et de vente pour la période.',
+    fields:`
+      <div class="form-group"><label class="form-label">Périodicité de déclaration</label><select class="form-select" name="type"><option>Mensuelle</option><option>Trimestrielle</option></select></div>
+      <div class="form-group"><label class="form-label">NIF de l'entreprise</label><input class="form-input" name="nif" placeholder="001-000-000-0"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Raison sociale</label><input class="form-input" name="raison" placeholder="Nom de l'entreprise"></div><div class="form-group"><label class="form-label">Période couverte</label><select class="form-select" name="dept"><option>Janvier 2025</option><option>Février 2025</option><option>Mars 2025</option><option>Avril 2025</option><option>T1 2025 (Jan–Mar)</option><option>T4 2024 (Oct–Déc)</option></select></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">CA taxable (HTG)</label><input class="form-input" name="capital" type="number" placeholder="Chiffre d'affaires de la période" min="0"></div><div class="form-group"><label class="form-label">TVA collectée (HTG)</label><input class="form-input" name="effectif" type="number" placeholder="TVA sur ventes" min="0"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">TVA déductible (HTG)</label><input class="form-input" name="menage" type="number" placeholder="TVA sur achats" min="0"></div><div class="form-group"><label class="form-label">TVA nette à payer (HTG)</label><input class="form-input" name="enfants" type="number" placeholder="= collectée – déductible" min="0"></div></div>
+      <div class="form-group"><label class="form-label">Observations</label><textarea class="form-textarea" name="motif" placeholder="Crédit de TVA reportable, exonérations, notes…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="compta@entreprise.ht"></div></div>`
+  },
+  // ── SANTÉ ──
+  'rdv-hopital': {
+    title:'RDV Hôpitaux publics', icon:'calendar-heart', color:'icon-green', inst:'MSPP', price:'Gratuit',
+    aiHint:'Ce service vous permet de prendre rendez-vous dans les hôpitaux et cliniques publiques haïtiennes. Sélectionnez votre département, l\'établissement et la spécialité. Une confirmation par SMS vous sera envoyée sous 24h.',
+    fields:`
+      <div class="form-group"><label class="form-label">Département</label><select class="form-select" name="dept"><option>Ouest</option><option>Nord</option><option>Artibonite</option><option>Centre</option><option>Sud</option><option>Sud-Est</option><option>Grande-Anse</option><option>Nippes</option><option>Nord-Est</option><option>Nord-Ouest</option></select></div>
+      <div class="form-group"><label class="form-label">Établissement de santé</label><select class="form-select" name="etablissement"><option>HUEH — Hôpital Universitaire d'État d'Haïti</option><option>Hôpital de la Paix — Port-au-Prince</option><option>CHOSCAL — Cité Soleil</option><option>Hôpital Justinien — Cap-Haïtien</option><option>Hôpital Immaculée Conception — Les Cayes</option><option>HGS — Hôpital Général Saint-Marc</option></select></div>
+      <div class="form-group"><label class="form-label">Spécialité / Type de consultation</label><select class="form-select" name="type"><option>Médecine générale</option><option>Pédiatrie</option><option>Obstétrique / Gynécologie</option><option>Chirurgie</option><option>Urgences</option><option>Cardiologie</option><option>Ophtalmologie</option><option>Dermatologie</option><option>Orthopédie</option></select></div>
+      <div class="form-group"><label class="form-label">Motif de la consultation</label><textarea class="form-textarea" name="motif" placeholder="Décrivez brièvement vos symptômes ou la raison de la consultation…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) du patient</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom du patient</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de naissance</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Numéro CIN</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email (optionnel)</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+  'vaccin': {
+    title:'Certificat de vaccination', icon:'syringe', color:'icon-green', inst:'MSPP', price:'250 HTG',
+    aiHint:'Le certificat digital de vaccination est reconnu à l\'international. Il vous faut votre carnet de vaccination original, votre CIN et un justificatif de domicile. Les vaccins inclus : fièvre jaune, COVID-19, hépatites, méningite, tétanos.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de certificat</label><select class="form-select" name="type"><option>Certificat international de vaccination (CIV)</option><option>Certificat de vaccination COVID-19</option><option>Attestation de vaccination — usage scolaire</option><option>Certificat complet multi-vaccins</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s)</label><input class="form-input" name="prenom" placeholder="Prénom(s) complet(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM DE FAMILLE"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de naissance</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Lieu de naissance</label><input class="form-input" name="lieu" placeholder="Commune"></div></div>
+      <div class="form-group"><label class="form-label">Numéro CIN</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div>
+      <div class="form-group"><label class="form-label">Vaccins à certifier</label><select class="form-select" name="secteur"><option>Fièvre jaune</option><option>COVID-19 (toutes doses)</option><option>Hépatite A & B</option><option>Méningite ACWY</option><option>Tétanos-Diphtérie</option><option>Ensemble du carnet</option></select></div>
+      <div class="form-group"><label class="form-label">Motif de la demande</label><select class="form-select" name="motif"><option>Voyage international</option><option>Inscription scolaire / universitaire</option><option>Emploi</option><option>Usage personnel</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+  // ── TRANSPORT ──
+  'contravention': {
+    title:'Paiement contravention', icon:'alert-circle', color:'icon-gold', inst:'DCSR', price:'Variable',
+    aiHint:'Réglez votre contravention routière en ligne en saisissant le numéro de PV figurant sur l\'avis de contravention. Le paiement en ligne évite les frais de retard. Conservez votre reçu pour présentation en cas de contrôle.',
+    fields:`
+      <div class="form-group"><label class="form-label">Numéro de PV (procès-verbal)</label><input class="form-input" name="registre" placeholder="Ex: PV-DCSR-2025-XXXXX"></div>
+      <div class="form-group"><label class="form-label">Type d'infraction</label><select class="form-select" name="type"><option>Excès de vitesse</option><option>Stationnement interdit</option><option>Feux / signalisation non respectés</option><option>Défaut d'assurance</option><option>Défaut de documents du véhicule</option><option>Téléphone au volant</option><option>Autre</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) du conducteur</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-group"><label class="form-label">Numéro CIN</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Immatriculation du véhicule</label><input class="form-input" name="matricule" placeholder="Ex: H-00000-A"></div><div class="form-group"><label class="form-label">Date de la contravention</label><input class="form-input" name="dob" type="date"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Montant de la contravention (HTG)</label><input class="form-input" name="capital" type="number" placeholder="Montant figurant sur le PV" min="0"></div><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div></div>`
+  },
+  // ── AFFAIRES SOCIALES ──
+  'subvention': {
+    title:'Demande de subvention', icon:'coins', color:'icon-green', inst:'MAST', price:'Gratuit',
+    aiHint:'Le MAST propose des subventions pour les agriculteurs, artisans et petits entrepreneurs. Le dossier comprend une description du projet, un plan simple et les informations du demandeur. Un agent MAST vous contactera pour la suite.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de subvention</label><select class="form-select" name="type"><option>Subvention agricole (intrants, équipements)</option><option>Subvention artisanale</option><option>Subvention PME / micro-entreprise</option><option>Subvention pêche artisanale</option><option>Subvention formation professionnelle</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s)</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de naissance</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Sexe</label><select class="form-select" name="sexe"><option>Femme</option><option>Homme</option><option>Préfère ne pas préciser</option></select></div></div>
+      <div class="form-group"><label class="form-label">Numéro CIN</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div>
+      <div class="form-group"><label class="form-label">Description du projet / besoin</label><textarea class="form-textarea" name="motif" placeholder="Décrivez votre activité, vos besoins et l'utilisation prévue de la subvention…" style="min-height:100px;"></textarea></div>
+      <div class="form-group"><label class="form-label">Montant de subvention estimé (HTG)</label><input class="form-input" name="capital" type="number" placeholder="Ex: 50 000" min="0"></div>
+      <div class="form-group"><label class="form-label">Adresse complète</label><textarea class="form-textarea" name="adresse" placeholder="Commune, section communale, adresse précise"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email (optionnel)</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+  'programme-alimentaire': {
+    title:'Programme alimentaire', icon:'wheat', color:'icon-green', inst:'MAST / PAM', price:'Gratuit',
+    aiHint:'Le programme alimentaire MAST/PAM cible les ménages en situation d\'insécurité alimentaire. L\'inscription ne garantit pas automatiquement une aide — une évaluation terrain sera effectuée. Les ménages avec enfants de moins de 5 ans, femmes enceintes ou allaitantes sont prioritaires.',
+    fields:`
+      <div class="form-group"><label class="form-label">Programme visé</label><select class="form-select" name="type"><option>Coupons alimentaires mensuels</option><option>Rations alimentaires d'urgence</option><option>Programme « Manger pour apprendre » (cantines)</option><option>Nutrition maternelle et infantile</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) chef de ménage</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-group"><label class="form-label">Numéro CIN</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Taille du ménage</label><input class="form-input" name="menage" type="number" placeholder="Nb de personnes" min="1"></div><div class="form-group"><label class="form-label">Dont enfants < 5 ans</label><input class="form-input" name="enfants" type="number" placeholder="Nombre" min="0"></div></div>
+      <div class="form-group"><label class="form-label">Situation alimentaire actuelle</label><select class="form-select" name="emploi"><option>Insécurité alimentaire sévère (moins d'1 repas/jour)</option><option>Insécurité alimentaire modérée (repas insuffisants)</option><option>Vulnérable (accès alimentaire précaire)</option></select></div>
+      <div class="form-group"><label class="form-label">Présence dans le ménage (cocher si applicable)</label><select class="form-select" name="situation"><option>Femme enceinte ou allaitante</option><option>Enfant malnutri suivi par MSPP</option><option>Personne handicapée</option><option>Chef de famille monoparentale</option><option>Aucune situation particulière</option></select></div>
+      <div class="form-group"><label class="form-label">Adresse complète</label><textarea class="form-textarea" name="adresse" placeholder="Commune, section communale, adresse précise"></textarea></div>
+      <div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div>`
+  },
+  'allocation-famille': {
+    title:'Allocation familles vulnérables', icon:'users', color:'icon-green', inst:'MAST', price:'Gratuit',
+    aiHint:'L\'allocation mensuelle MAST cible les familles en situation de précarité extrême. Le montant varie entre 3 000 et 8 000 HTG/mois selon la composition du ménage. Un travailleur social effectuera une visite de vérification avant validation.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type d'allocation</label><select class="form-select" name="type"><option>Allocation familles vulnérables (générale)</option><option>Allocation familles déplacées</option><option>Allocation victimes de catastrophe</option><option>Allocation monoparentale</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) chef de ménage</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de naissance</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Sexe</label><select class="form-select" name="sexe"><option>Femme</option><option>Homme</option></select></div></div>
+      <div class="form-group"><label class="form-label">Numéro CIN</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Taille du ménage</label><input class="form-input" name="menage" type="number" placeholder="Nb total" min="1"></div><div class="form-group"><label class="form-label">Dont enfants (< 18 ans)</label><input class="form-input" name="enfants" type="number" placeholder="Nombre" min="0"></div></div>
+      <div class="form-group"><label class="form-label">Situation professionnelle</label><select class="form-select" name="emploi"><option>Sans emploi</option><option>Emploi informel / précaire</option><option>Agriculteur(trice)</option><option>Artisan(e)</option></select></div>
+      <div class="form-group"><label class="form-label">Revenu mensuel du ménage (HTG)</label><select class="form-select" name="revenu"><option>Aucun revenu</option><option>Moins de 5 000 HTG</option><option>5 000 – 10 000 HTG</option></select></div>
+      <div class="form-group"><label class="form-label">Adresse complète</label><textarea class="form-textarea" name="adresse" placeholder="Commune, section communale, adresse précise"></textarea></div>
+      <div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div>`
+  },
+  'registre-social': {
+    title:'Registre social unique', icon:'database', color:'icon-green', inst:'MAST', price:'Gratuit',
+    aiHint:'Le Registre Social Unique (RSU) est la base nationale des bénéficiaires des programmes sociaux haïtiens. S\'inscrire au RSU ne garantit pas automatiquement une aide, mais vous permet d\'être considéré pour tous les programmes disponibles.',
+    fields:`
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s)</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de naissance</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Sexe</label><select class="form-select" name="sexe"><option>Femme</option><option>Homme</option><option>Préfère ne pas préciser</option></select></div></div>
+      <div class="form-group"><label class="form-label">Numéro CIN</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div>
+      <div class="form-group"><label class="form-label">Département</label><select class="form-select" name="dept"><option>Ouest</option><option>Nord</option><option>Nord-Est</option><option>Nord-Ouest</option><option>Artibonite</option><option>Centre</option><option>Sud</option><option>Sud-Est</option><option>Grande-Anse</option><option>Nippes</option></select></div>
+      <div class="form-group"><label class="form-label">Commune de résidence</label><input class="form-input" name="lieu" placeholder="Ex: Pétion-Ville, Delmas, Cap-Haïtien…"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Taille du ménage</label><input class="form-input" name="menage" type="number" placeholder="Nb personnes" min="1"></div><div class="form-group"><label class="form-label">Situation professionnelle</label><select class="form-select" name="emploi"><option>Sans emploi</option><option>Emploi informel</option><option>Agriculteur(trice)</option><option>Salarié(e)</option><option>Artisan(e)</option></select></div></div>
+      <div class="form-group"><label class="form-label">Programmes souhaités (optionnel)</label><select class="form-select" name="type"><option>Tous les programmes disponibles</option><option>Aide alimentaire uniquement</option><option>Allocations financières uniquement</option><option>Formation professionnelle</option></select></div>
+      <div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div>`
+  },
+  // ── MIGRATION ──
+  'consulaire': {
+    title:'Services consulaires digitaux', icon:'globe', color:'icon-purple', inst:'MRE / DGM', price:'Variable',
+    aiHint:'Les services consulaires digitaux couvrent : légalisation de documents, apostille, actes d\'état civil haïtiens pour la diaspora, et procurations. Le traitement est coordonné entre le consulat haïtien de votre pays de résidence et le DINIH.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de service consulaire</label><select class="form-select" name="type"><option>Légalisation de document haïtien</option><option>Apostille (Convention de La Haye)</option><option>Acte d'état civil pour la diaspora</option><option>Procuration consulaire</option><option>Attestation de vie (retraite)</option><option>Reconnaissance de nationalité haïtienne</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s)</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de naissance</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Lieu de naissance</label><input class="form-input" name="lieu" placeholder="Commune, Haïti"></div></div>
+      <div class="form-group"><label class="form-label">Pays de résidence actuel</label><select class="form-select" name="pays"><option>France</option><option>États-Unis</option><option>Canada</option><option>République Dominicaine</option><option>Chili</option><option>Brésil</option><option>Belgique</option><option>Suisse</option><option>Autre</option></select></div>
+      <div class="form-group"><label class="form-label">Consulat haïtien de référence</label><input class="form-input" name="bureau" placeholder="Ex: Consulat d'Haïti à Paris, Miami, Montréal…"></div>
+      <div class="form-group"><label class="form-label">Description du document à légaliser / traiter</label><textarea class="form-textarea" name="motif" placeholder="Décrivez le document concerné et son usage prévu…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone (avec indicatif)</label><input class="form-input" name="tel" type="tel" placeholder="+33 / +1 / +509…"></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+  'transfert-officiel': {
+    title:'Déclaration de transfert', icon:'arrow-left-right', color:'icon-purple', inst:'BRH / DGM', price:'Gratuit',
+    aiHint:'La déclaration officielle de transferts de fonds depuis l\'étranger est requise pour les montants supérieurs à 10 000 USD. Elle est transmise à la BRH (Banque de la République d\'Haïti) et permet de sécuriser les fonds reçus.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de déclaration</label><select class="form-select" name="type"><option>Transfert entrant (depuis l'étranger vers Haïti)</option><option>Transfert sortant (d'Haïti vers l'étranger)</option><option>Déclaration de biens à l'entrée en Haïti</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) du déclarant</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-group"><label class="form-label">Numéro CIN ou passeport</label><input class="form-input" name="cin" placeholder="CIN-00000000 ou N° passeport"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Montant (USD)</label><input class="form-input" name="capital" type="number" placeholder="Ex: 15 000" min="0"></div><div class="form-group"><label class="form-label">Pays d'origine des fonds</label><select class="form-select" name="pays"><option>États-Unis</option><option>Canada</option><option>France</option><option>Brésil</option><option>République Dominicaine</option><option>Autre</option></select></div></div>
+      <div class="form-group"><label class="form-label">Nature des fonds</label><select class="form-select" name="motif"><option>Envoi familial (diaspora)</option><option>Investissement commercial</option><option>Achat immobilier</option><option>Salaires / Paiement de services</option><option>Donation / ONG</option></select></div>
+      <div class="form-group"><label class="form-label">Banque ou opérateur récepteur en Haïti</label><select class="form-select" name="secteur"><option>BNC — Banque Nationale de Crédit</option><option>BUH — Banque de l'Union Haïtienne</option><option>Sogebank</option><option>Unibank</option><option>MonCash / NatCash</option><option>Western Union / MoneyGram</option><option>Autre</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+  // ── SERVICES GRATUITS — ÉTAT CIVIL ──
+  // Source: ONI Haiti (oni.gouv.ht) — vérification identité par terminaux ONI (Art.18 décret ONI)
+  'verif-qr': {
+    title:'Vérification identité QR', icon:'qr-code', color:'icon-blue', inst:'ONI', price:'Gratuit',
+    aiHint:'La vérification par QR code ou numéro unique permet de contrôler l\'authenticité d\'une CIN, d\'un acte d\'état civil ou de tout document officiel émis par l\'ONI. Saisissez le code figurant au dos du document. Résultat instantané.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de document à vérifier</label><select class="form-select" name="type"><option>Carte d'Identification Nationale (CIN)</option><option>Acte de naissance</option><option>Acte de mariage</option><option>Acte de décès</option><option>Passeport haïtien</option></select></div>
+      <div class="form-group"><label class="form-label">Code QR ou numéro unique du document</label><input class="form-input" name="registre" placeholder="Ex: ONI-2025-XXXXXXXXXX ou scanner le QR"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Nom figurant sur le document</label><input class="form-input" name="nom" placeholder="NOM DE FAMILLE"></div><div class="form-group"><label class="form-label">Prénom(s)</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div></div>
+      <div class="form-group"><label class="form-label">Date de naissance de l'intéressé</label><input class="form-input" name="dob" type="date"></div>
+      <div class="form-group"><label class="form-label">Motif de la vérification</label><select class="form-select" name="motif"><option>Vérification personnelle</option><option>Recrutement / embauche</option><option>Acte notarié ou légal</option><option>Contrôle administratif</option><option>Autre</option></select></div>
+      <div class="form-note" style="margin-top:4px;"><i data-lucide="info"></i>La vérification est instantanée et gratuite. Le résultat confirme ou infirme l'authenticité du document dans la base ONI.</div>`
+  },
+
+  // Source: Adapté du Cerfa 14011*02 France (service-public.fr) + Police Nationale Haïtienne
+  'perte': {
+    title:'Déclaration de perte', icon:'alert-triangle', color:'icon-red', inst:'PNH / ONI', price:'Gratuit',
+    aiHint:'La déclaration de perte rend votre document officiellement invalide dans les bases d\'état haïtiennes, empêchant toute utilisation frauduleuse. Munissez-vous de votre numéro de CIN perdue si vous le connaissez. Une confirmation numérique vous sera envoyée par SMS. Adapté du formulaire officiel français Cerfa 14011 et de la procédure PNH.',
+    fields:`
+      <div class="form-group"><label class="form-label">Document perdu ou volé</label><select class="form-select" name="type"><option>Carte d'Identification Nationale (CIN)</option><option>Passeport haïtien</option><option>Permis de conduire</option><option>CIN + Passeport</option><option>Carte ONA / MSPP</option><option>NIF (matricule fiscal)</option></select></div>
+      <div class="form-group"><label class="form-label">Circonstance de la perte</label><select class="form-select" name="motif"><option>Perte (ne sait pas où)</option><option>Vol (constaté)</option><option>Destruction accidentelle (incendie, inondation…)</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) du titulaire</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom de famille</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de naissance</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Lieu de naissance</label><input class="form-input" name="lieu" placeholder="Commune, département"></div></div>
+      <div class="form-group"><label class="form-label">Numéro du document perdu (si connu)</label><input class="form-input" name="registre" placeholder="Ex: CIN-00000000 / N° passeport — optionnel"></div>
+      <div class="form-group"><label class="form-label">Date approximative de la perte</label><input class="form-input" name="date-perte" type="date"></div>
+      <div class="form-group"><label class="form-label">Lieu probable de la perte (commune)</label><input class="form-input" name="adresse" placeholder="Ex: Pétion-Ville, marché de Delmas…"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>
+      <div class="form-note" style="margin-top:4px;"><i data-lucide="shield-alert"></i>Cette déclaration invalide définitivement le document. Vous recevrez un numéro de déclaration officiel à conserver pour votre demande de remplacement.</div>`
+  },
+
+  // Source: Basé sur le système BUNEXE/MENFP et les pratiques des greffes civils haïtiens
+  'rdv-tribunal': {
+    title:'RDV Tribunal', icon:'calendar', color:'icon-red', inst:'MJ — Tribunaux civils', price:'Gratuit',
+    aiHint:'La prise de rendez-vous au tribunal civil haïtien est gratuite. Elle concerne les affaires civiles (succession, mariage, contrats, filiation…), commerciales et correctionnelles. Sélectionnez le tribunal du département concerné et la nature de votre affaire. Un greffier vous contactera pour confirmer la date.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de juridiction</label><select class="form-select" name="type"><option>Tribunal de Première Instance (TPI) — Civil</option><option>Tribunal de Première Instance — Commercial</option><option>Tribunal Correctionnel</option><option>Cour d'Appel</option><option>Tribunal de Paix</option></select></div>
+      <div class="form-group"><label class="form-label">Tribunal / Juridiction concernée</label><select class="form-select" name="centre"><option>TPI de Port-au-Prince</option><option>TPI de Cap-Haïtien</option><option>TPI des Cayes</option><option>TPI de Gonaïves</option><option>TPI de Jérémie</option><option>TPI de Jacmel</option><option>TPI de Hinche</option><option>TPI de Saint-Marc</option></select></div>
+      <div class="form-group"><label class="form-label">Nature de l'affaire</label><select class="form-select" name="secteur"><option>Succession / Héritage</option><option>Divorce / Séparation</option><option>Contrat commercial en litige</option><option>Filiation / État civil</option><option>Bien immobilier / Foncier</option><option>Pension alimentaire</option><option>Autre affaire civile</option></select></div>
+      <div class="form-group"><label class="form-label">N° de dossier (si affaire en cours)</label><input class="form-input" name="registre" placeholder="Optionnel si première démarche"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) du demandeur</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-group"><label class="form-label">Numéro CIN</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div>
+      <div class="form-group"><label class="form-label">Brève description de la démarche</label><textarea class="form-textarea" name="motif" placeholder="Décrivez brièvement l'objet de votre demande de rendez-vous…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+
+  // Source: DGI Haiti (dgi.gouv.ht) — consultation de dossier fiscal via NIF
+  'situation-fiscale': {
+    title:'Situation fiscale', icon:'bar-chart', color:'icon-gold', inst:'DGI', price:'Gratuit',
+    aiHint:'La consultation de votre situation fiscale vous permet de vérifier vos déclarations enregistrées, vos paiements, vos dettes éventuelles et l\'état de votre dossier à la DGI. Vous avez besoin de votre NIF. Résultat instantané après vérification dans la base DGI.',
+    fields:`
+      <div class="form-group"><label class="form-label">Numéro d'Identification Fiscale (NIF)</label><input class="form-input" name="nif" placeholder="001-000-000-0"></div>
+      <div class="form-group"><label class="form-label">Type de contribuable</label><select class="form-select" name="type"><option>Personne physique (individuel)</option><option>Entreprise individuelle</option><option>Société (SARL, SA, SNC…)</option><option>ONG / Association</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) / Raison sociale</label><input class="form-input" name="prenom" placeholder="Nom ou raison sociale"></div><div class="form-group"><label class="form-label">Exercice fiscal à consulter</label><select class="form-select" name="dept"><option>2024 (exercice en cours)</option><option>2023</option><option>2022</option><option>Tous les exercices</option></select></div></div>
+      <div class="form-group"><label class="form-label">Informations souhaitées</label><select class="form-select" name="secteur"><option>Situation globale (déclarations + paiements)</option><option>Solde de taxes dues</option><option>Historique des paiements</option><option>Statut de conformité (à jour / arriéré)</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone (pour code de confirmation)</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>
+      <div class="form-note" style="margin-top:4px;"><i data-lucide="info"></i>Un code SMS vous sera envoyé pour confirmer votre identité avant d'afficher les données fiscales.</div>`
+  },
+
+  // Source: MCCE Haiti — registre public national des entreprises
+  'recherche-entreprise': {
+    title:'Recherche entreprise', icon:'search', color:'icon-purple', inst:'MCCE', price:'Gratuit',
+    aiHint:'Le registre public national des entreprises haïtiennes est consultable gratuitement. Vous pouvez rechercher par nom commercial, NIF ou numéro d\'enregistrement. Idéal pour vérifier l\'existence légale d\'une entreprise avant une transaction commerciale.',
+    fields:`
+      <div class="form-group"><label class="form-label">Critère de recherche</label><select class="form-select" name="type"><option>Nom commercial / Raison sociale</option><option>NIF (Numéro d'Identification Fiscale)</option><option>Numéro d'enregistrement MCCE</option><option>Nom du responsable / gérant</option></select></div>
+      <div class="form-group"><label class="form-label">Valeur recherchée</label><input class="form-input" name="raison" placeholder="Ex: Super Marché X, 001-000-000-0, ou NOM DU GÉRANT"></div>
+      <div class="form-group"><label class="form-label">Secteur d'activité (optionnel — pour affiner)</label><select class="form-select" name="secteur"><option>Tous secteurs</option><option>Commerce général</option><option>Import / Export</option><option>Construction & BTP</option><option>Services professionnels</option><option>Alimentation / Restauration</option><option>Santé & Pharmacie</option><option>Éducation & Formation</option><option>Transport & Logistique</option></select></div>
+      <div class="form-group"><label class="form-label">Département de localisation (optionnel)</label><select class="form-select" name="dept"><option>Tous départements</option><option>Ouest</option><option>Nord</option><option>Artibonite</option><option>Centre</option><option>Sud</option><option>Sud-Est</option><option>Grande-Anse</option><option>Nippes</option><option>Nord-Est</option><option>Nord-Ouest</option></select></div>
+      <div class="form-note" style="margin-top:8px;"><i data-lucide="info"></i>La recherche est gratuite et instantanée. Les résultats affichent : nom, NIF, statut légal, siège social et responsable légal.</div>`
+  },
+
+  // Source: MSPP Haiti — système d'alerte épidémique national
+  'alertes-sante': {
+    title:'Alertes sanitaires', icon:'bell', color:'icon-green', inst:'MSPP', price:'Gratuit',
+    aiHint:'Abonnez-vous aux alertes épidémiques et sanitaires du Ministère de la Santé Publique et de la Population (MSPP). Vous recevrez des notifications SMS et email en cas d\'épidémie, alerte cholera, dengue, malaria, ou urgence sanitaire dans votre département.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type d'alertes souhaitées</label><select class="form-select" name="type"><option>Toutes alertes sanitaires (recommandé)</option><option>Épidémies uniquement (choléra, dengue, malaria…)</option><option>Alertes locales (votre département uniquement)</option><option>Alertes vaccination / campagnes MSPP</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s)</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Département de résidence</label><select class="form-select" name="dept"><option>Ouest</option><option>Nord</option><option>Nord-Est</option><option>Nord-Ouest</option><option>Artibonite</option><option>Centre</option><option>Sud</option><option>Sud-Est</option><option>Grande-Anse</option><option>Nippes</option></select></div><div class="form-group"><label class="form-label">Commune</label><input class="form-input" name="lieu" placeholder="Ex: Port-au-Prince, Cap-Haïtien…"></div></div>
+      <div class="form-group"><label class="form-label">Téléphone (SMS alertes)</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div>
+      <div class="form-group"><label class="form-label">Email (alertes détaillées)</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div>
+      <div class="form-group"><label class="form-label">Profil (pour alertes ciblées)</label><select class="form-select" name="secteur"><option>Citoyen général</option><option>Agent de santé / soignant</option><option>Directeur d'école</option><option>Responsable communautaire</option><option>ONG / partenaire humanitaire</option></select></div>
+      <div class="form-note" style="margin-top:4px;"><i data-lucide="bell"></i>Abonnement gratuit. Désinscription possible à tout moment par SMS.</div>`
+  },
+
+  // Source: DCSR Haiti — vérification documents de véhicules; calqué service-public.fr "immatriculation véhicule"
+  'verif-vehicule': {
+    title:'Vérification documents véhicule', icon:'search', color:'icon-gold', inst:'DCSR', price:'Gratuit',
+    aiHint:'Contrôlez la validité des documents d\'un véhicule immatriculé en Haïti : carte grise, assurance, contrôle technique. Saisissez le numéro de plaque. Idéal avant l\'achat d\'un véhicule d\'occasion pour vérifier son statut légal et détecter un éventuel vol.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de vérification</label><select class="form-select" name="type"><option>Validité complète (carte grise + assurance + CT)</option><option>Statut légal (vol, gage, saisie)</option><option>Historique du véhicule</option><option>Propriétaire enregistré</option></select></div>
+      <div class="form-group"><label class="form-label">Numéro d'immatriculation (plaque)</label><input class="form-input" name="matricule" placeholder="Ex: H-00000-A"></div>
+      <div class="form-group"><label class="form-label">Numéro de châssis (VIN) — optionnel</label><input class="form-input" name="registre" placeholder="17 caractères — optionnel pour confirmation"></div>
+      <div class="form-group"><label class="form-label">Motif de la vérification</label><select class="form-select" name="motif"><option>Achat de véhicule d'occasion</option><option>Contrôle routier (agent)</option><option>Vérification personnelle de mes documents</option><option>Procédures d'assurance</option><option>Autre</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Votre téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Votre email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>
+      <div class="form-note" style="margin-top:4px;"><i data-lucide="info"></i>Résultat instantané. En cas de véhicule volé ou saisi, une alerte automatique est transmise à la DCSR et à la PNH.</div>`
+  },
+
+  // Source: MENFP Haiti SIGEEE — inscription scolaire + service-public.fr inscription école
+  'inscription-scolaire': {
+    title:'Inscription scolaire', icon:'school', color:'icon-cyan', inst:'MENFP', price:'Gratuit',
+    aiHint:'L\'inscription en ligne dans les écoles fondamentales et lycées publics haïtiens est ouverte de septembre à novembre. Elle génère un identifiant unique élève dans le système SIGEEE du MENFP. Munissez-vous de l\'acte de naissance de l\'enfant et de la CIN du parent.',
+    fields:`
+      <div class="form-group"><label class="form-label">Niveau scolaire visé</label><select class="form-select" name="type"><option>Préscolaire (3–5 ans)</option><option>Fondamental 1er cycle (1ère – 3ème)</option><option>Fondamental 2ème cycle (4ème – 6ème)</option><option>Fondamental 3ème cycle (7ème – 9ème)</option><option>Secondaire / Lycée (Philo, Terminale)</option></select></div>
+      <div class="form-group"><label class="form-label">Département et école souhaitée</label><select class="form-select" name="centre"><option>Lycée Pétion — Port-au-Prince</option><option>Lycée National de Cap-Haïtien</option><option>Lycée des Cayes</option><option>Lycée de Gonaïves</option><option>Lycée de Jérémie</option><option>Lycée de Jacmel</option><option>Autre école fondamentale publique</option></select></div>
+      <div style="background:var(--bg2);border-radius:10px;padding:14px;margin-bottom:16px;"><div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em;">Informations de l'élève</div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s) de l'élève</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom de famille</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de naissance</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Lieu de naissance</label><input class="form-input" name="lieu" placeholder="Commune"></div></div>
+      <div class="form-group"><label class="form-label">Matricule scolaire (si déjà scolarisé)</label><input class="form-input" name="matricule" placeholder="HTI-XXXX-XXXXX — optionnel"></div></div>
+      <div style="background:var(--bg2);border-radius:10px;padding:14px;margin-bottom:0;"><div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em;">Informations du parent / tuteur</div>
+      <div class="form-row"><div class="form-group"><label class="form-label">CIN du parent</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+
+  // Source: MENFP + BGH (Bureau des Bourses d'Haïti) — MEF / OEA / PNUD bourses
+  'bourse': {
+    title:'Bourses d\'études', icon:'coins', color:'icon-cyan', inst:'MENFP / BGH', price:'Gratuit',
+    aiHint:'Le Bureau des Bourses d\'Haïti (BGH) gère les bourses nationales et internationales. Les bourses disponibles incluent celles de l\'OEA, du Brésil, de Cuba, de la France, de la Chine, de la Russie et des bourses internes MENFP. Délai de traitement variable selon le bailleur.',
+    fields:`
+      <div class="form-group"><label class="form-label">Type de bourse</label><select class="form-select" name="type"><option>Bourse nationale MENFP (études en Haïti)</option><option>Bourse internationale — OEA</option><option>Bourse internationale — Brésil (CAPES/CNPq)</option><option>Bourse internationale — Cuba (MINED)</option><option>Bourse internationale — France (Campus France)</option><option>Bourse internationale — Chine (CSC)</option><option>Bourse internationale — Russie</option><option>Autre bourse internationale</option></select></div>
+      <div class="form-group"><label class="form-label">Domaine d'études visé</label><select class="form-select" name="secteur"><option>Médecine & Santé</option><option>Ingénierie & Technologie</option><option>Sciences économiques & Gestion</option><option>Droit</option><option>Sciences de l'éducation</option><option>Agriculture & Environnement</option><option>Arts & Communication</option><option>Sciences sociales</option></select></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Prénom(s)</label><input class="form-input" name="prenom" placeholder="Prénom(s)"></div><div class="form-group"><label class="form-label">Nom</label><input class="form-input" name="nom" placeholder="NOM"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Date de naissance</label><input class="form-input" name="dob" type="date"></div><div class="form-group"><label class="form-label">Lieu de naissance</label><input class="form-input" name="lieu" placeholder="Commune"></div></div>
+      <div class="form-group"><label class="form-label">Numéro CIN</label><input class="form-input" name="cin" placeholder="CIN-00000000"></div>
+      <div class="form-group"><label class="form-label">Dernier diplôme obtenu</label><select class="form-select" name="diplome"><option>BAC (2ème partie)</option><option>Licence (Bac+3)</option><option>Maîtrise / Master (Bac+5)</option><option>Doctorat</option></select></div>
+      <div class="form-group"><label class="form-label">Établissement d'origine</label><input class="form-input" name="etablissement" placeholder="Nom de l'université ou lycée"></div>
+      <div class="form-group"><label class="form-label">Lettre de motivation (résumé)</label><textarea class="form-textarea" name="motif" placeholder="Décrivez en quelques lignes votre projet d'études et vos ambitions…" style="min-height:90px;"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" name="tel" type="tel" placeholder="+509 "></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="votre@email.com"></div></div>`
+  },
+
   'aide-sociale': {
     title:'Inscription aide sociale', icon:'hand-heart', color:'icon-green', inst:'MAST', price:'Gratuit',
     aiHint:'L\'aide sociale du MAST cible les ménages en situation de vulnérabilité. Vous devez fournir : composition du ménage, situation professionnelle, revenus mensuels estimés et justificatifs de résidence. Un agent social effectuera une visite de vérification.',
@@ -1651,14 +2101,66 @@ let activeStep = 0; // 0=form, 1=review, 2=pay, 3=receipt
 let selectedPayMethod = null;
 let submittedDemandes = [];
 
+// Services bientôt disponibles avec leur progression et description
+const soonServices = {
+  'correction-acte':      { pct:55, desc:'Rectification d\'erreurs nominatives sur les actes civils — en cours d\'intégration avec les greffes de l\'état civil.', inst:'ONI' },
+  'changement-adresse':   { pct:40, desc:'Mise à jour officielle de votre adresse dans les registres de l\'État — module en développement.', inst:'ONI' },
+  'suivi-judiciaire':     { pct:70, desc:'Consultation de l\'état d\'avancement d\'un dossier judiciaire — interfaçage avec les greffes en cours.', inst:'MJ' },
+  'plainte':              { pct:60, desc:'Pré-déclaration officielle avant dépôt physique au commissariat — module sécurisé en finalisation.', inst:'PNH / MJ' },
+  'autorisation-comm':    { pct:45, desc:'Demande d\'autorisation pour secteurs réglementés (import, pharmacie…) — module en cours de développement.', inst:'MCCE' },
+  'carte-sante':          { pct:35, desc:'Dossier médical numérique — carte patient officielle MSPP, en cours de développement avec les hôpitaux.', inst:'MSPP' },
+  'verif-diplome':        { pct:50, desc:'Authentification officielle d\'un diplôme haïtien — interfaçage avec la base BUNEXE/MENFP en cours.', inst:'MENFP' },
+  'espace-etudiant':      { pct:30, desc:'Plateforme de cours et ressources pédagogiques en ligne — module en développement avec PRATIC/MENFP.', inst:'MENFP' },
+  'permis':               { pct:65, desc:'Demande de permis de conduire catégories A/B/C/D — intégration avec le système DCSR en finalisation.', inst:'DCSR' },
+  'renouvellement-permis':{ pct:60, desc:'Renouvellement en ligne du permis de conduire — module en test avec les bureaux DCSR.', inst:'DCSR' },
+  'immatriculation':      { pct:40, desc:'Immatriculation de véhicule — interfaçage avec le registre national des véhicules en développement.', inst:'DCSR' },
+  'titre-propriete':      { pct:25, desc:'Accès au registre foncier national — numérisation du cadastre haïtien en cours par le MTPTC.', inst:'MTPTC / DGI Foncier' },
+  'enreg-terrain':        { pct:20, desc:'Enregistrement officiel de parcelle foncière — projet de numérisation du registre foncier haïtien.', inst:'MTPTC' },
+  'certif-foncier':       { pct:30, desc:'Certificat officiel de propriété foncière — en attente de la numérisation du cadastre national.', inst:'MTPTC' },
+  'historique-proprio':   { pct:20, desc:'Historique des propriétaires dans le cadastre — dépend du projet de numérisation foncière nationale.', inst:'MTPTC' },
+  'litige-foncier':       { pct:45, desc:'Suivi de dossier de litige foncier devant les tribunaux — interfaçage avec le greffe judiciaire.', inst:'MJ' },
+  'visa':                 { pct:55, desc:'Demande de visa d\'entrée ou autorisation de séjour — module en développement avec la DGM.', inst:'DGM' },
+  'carte-diaspora':       { pct:50, desc:'Carte officielle d\'appartenance à la diaspora haïtienne — partenariat MRE/DGM en cours.', inst:'MRE / DGM' },
+};
+
 function openService(id) {
   const svc = forms[id];
-  if (!svc) { alert('Ce formulaire sera disponible prochainement.'); return; }
+  if (!svc) {
+    // Trouver les infos du service dans svcCats
+    let svcInfo = null;
+    for (const cat of svcCats) {
+      const found = cat.items.find(i => i.id === id);
+      if (found) { svcInfo = found; break; }
+    }
+    const soon = soonServices[id] || { pct: 50, desc: 'Ce service est en cours de développement par nos équipes techniques.', inst: 'DINIH' };
+    const title = svcInfo ? svcInfo.title : 'Service en développement';
+    const inst = svcInfo ? svcInfo.desc : soon.desc;
+
+    document.getElementById('soon-modal-title').textContent = 'Service en développement';
+    document.getElementById('soon-modal-inst').textContent = soon.inst + ' — DINIH';
+    document.getElementById('soon-modal-svc-title').textContent = title;
+    document.getElementById('soon-modal-desc').textContent = soon.desc;
+    document.getElementById('soon-progress-pct').textContent = soon.pct + '%';
+    document.getElementById('soon-progress-bar').style.width = soon.pct + '%';
+    document.getElementById('soon-notify-confirm').style.display = 'none';
+    document.getElementById('soon-notify-tel').value = '';
+    openOverlay('soon-overlay');
+    lucide.createIcons();
+    return;
+  }
   activeService = id;
   activeStep = 0;
   selectedPayMethod = null;
   renderServiceModal(svc);
   openOverlay('service-overlay');
+}
+
+function soonNotify() {
+  const tel = document.getElementById('soon-notify-tel').value.trim();
+  if (!tel) { document.getElementById('soon-notify-tel').focus(); return; }
+  document.getElementById('soon-notify-confirm').style.display = 'flex';
+  document.getElementById('soon-notify-tel').disabled = true;
+  lucide.createIcons();
 }
 
 function renderServiceModal(svc) {
@@ -1681,7 +2183,7 @@ function renderServiceModal(svc) {
   if (activeStep === 0) {
     body.innerHTML = `
       <div class="ai-hint">
-        <div class="ai-hint-icon">🤖</div>
+        <div class="ai-hint-icon"><i data-lucide="sparkles" style="width:20px;height:20px;color:var(--bleu-mid);"></i></div>
         <div><div class="ai-hint-label">Assistant IA</div><div class="ai-hint-text">${svc.aiHint}</div></div>
       </div>
       <form id="svc-form" onsubmit="return false;">${svc.fields}</form>`;
@@ -1691,7 +2193,7 @@ function renderServiceModal(svc) {
   } else if (activeStep === 1) {
     const data = collectFormData();
     body.innerHTML = `
-      <div class="ai-hint"><div class="ai-hint-icon">🤖</div><div><div class="ai-hint-label">Révision IA</div><div class="ai-hint-text">Vérifiez attentivement les informations ci-dessous avant de procéder au paiement. Une fois soumis, votre demande sera transmise à ${svc.inst}.</div></div></div>
+      <div class="ai-hint"><div class="ai-hint-icon"><i data-lucide="sparkles" style="width:20px;height:20px;color:var(--bleu-mid);"></i></div><div><div class="ai-hint-label">Révision IA</div><div class="ai-hint-text">Vérifiez attentivement les informations ci-dessous avant de procéder au paiement. Une fois soumis, votre demande sera transmise à ${svc.inst}.</div></div></div>
       <div class="review-section">
         <div class="review-title">Informations saisies</div>
         ${Object.entries(data).map(([k,v]) => v ? `<div class="review-row"><span class="review-key">${k}</span><span class="review-val">${v}</span></div>` : '').join('')}
@@ -1898,10 +2400,10 @@ function openNews(idx) {
   document.getElementById('news-modal-date').textContent = '📅 ' + n.date + ' · ' + n.cat;
   document.getElementById('news-modal-body').innerHTML = `<p style="color:var(--text2);line-height:1.8;margin-bottom:20px;">${n.body}</p>
     <div class="ai-insight-box">
-      <div class="ai-insight-icon">🤖</div>
+      <div class="ai-insight-icon"><i data-lucide="sparkles" style="width:20px;height:20px;color:var(--bleu-mid);"></i></div>
       <div><div class="ai-insight-label">Analyser avec l'IA</div><div class="ai-insight-text">Voulez-vous que l'assistant vous explique l'impact de cette actualité sur votre situation ?</div></div>
     </div>
-    <button class="btn-primary" style="width:100%;justify-content:center;margin-top:14px;" onclick="closeOverlay('news-overlay');toggleChat();fabAsk('Explique-moi cette actualité : ${n.title.replace(/'/g,"\\'")}. Quel impact concret pour un citoyen haïtien ?')"><i data-lucide="bot"></i>M'expliquer avec l'IA</button>`;
+    <button class="btn-primary" style="width:100%;justify-content:center;margin-top:14px;" onclick="closeOverlay('news-overlay');toggleChat();fabAsk('Explique-moi cette actualité : ${n.title.replace(/'/g,"\\'")}. Quel impact concret pour un citoyen haïtien ?')"><i data-lucide="sparkles"></i>M'expliquer avec l'IA</button>`;
   openOverlay('news-overlay');
   lucide.createIcons();
 }
